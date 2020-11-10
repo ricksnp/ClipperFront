@@ -1,0 +1,12 @@
+a:link{
+    color:white;
+  }
+  a.visited{
+    color:gray;
+  }
+  a.hover{
+    color: whitesmoke;
+  }
+  a.active{
+    color: white;
+  }
