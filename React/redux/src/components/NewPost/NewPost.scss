@@ -1,0 +1,32 @@
+
+#mainDiv {
+    width:'100%'; 
+    margin:'0px';
+    padding-top:'10px' ;
+    border-bottom:'2px solid white';
+}
+
+#anchorTag {
+    width:'90px';
+    height:"90px";
+    border-radius:'50%'; 
+    border:'2px solid #FFF';
+}
+
+#anchorTag2 {
+    width:'100px';
+    height:"100px";
+    border-radius:'50%'; 
+    border:'2px solid #FFF';
+}
+
+#firstAndLastDiv {
+    display:"flex"; 
+    align-items: "center";
+}
+
+#middleDiv {
+    display:"flex";
+    align-items: "center";
+    padding:'10px'
+}

@@ -2,27 +2,19 @@ $commonColor:  #202430;
 
 $formPosition: left;
 
-.theColor {
-    color: $commonColor
-}
-
-.theBackgroundColor {
-    background: $commonColor;
-}
-
 .theFormPosition {
     text-align: $formPosition;
 }
 
-h3, label {
-    color: red;
-}
-
-#forgot {
-    color: $commonColor;
-}
 
 #commonColor {
     color: $commonColor;
 }
+
+#commonBackground {
+    background: $commonColor;
+}
+
+
+
 
