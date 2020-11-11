@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../index.css';
+import '../../index.scss';
 import ProfilePane from "../../components/ProfilePane/ProfilePane"
 import {Feed} from './../../components/Feed/Feed'
 
