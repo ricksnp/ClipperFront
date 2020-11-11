@@ -1,0 +1,33 @@
+
+#outerDiv {
+    width:'100%';
+    margin:'0px' ;
+    border-bottom:'2px solid white';
+}
+
+#div1 {
+    display:"flex";
+    align-items: "center"
+}
+
+#div2 {
+    display:"flex";
+     align-items: "center";
+     padding:'10px';
+}
+
+#div3 {
+    width:'100%';
+}
+
+#anchorOne {
+    width:'90px';
+    height:"90px";
+    border-radius:'50%'; 
+    border:'2px solid #FFF';
+}
+
+#anchorTwo {
+    width:'100px';
+    height:'100px';
+}
