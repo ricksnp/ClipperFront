@@ -1,8 +1,9 @@
 import React from 'react';
 import Posts from '../Posts/Posts';
 import TextEditor from '../TextEditor/TextEditor';
+import { Users } from '../Users/Users';
 import dark_theme_logo from './../../Assets/Clipper-Logo-Dark-Theme.png';
-import './../../views/LandingPage/LandingPage.css';
+import './../../views/LandingPage/LandingPage.scss';
 import { NewPost } from './../NewPost/NewPost';
 
 
@@ -18,13 +19,11 @@ export function Feed(props:any){
                 <p className='d-md-none d-l-none d-xl-none' style={{textAlign: "center"}}>Welcome to <strong>Clipper!</strong><br/>Please <a href="#">Login</a> or <a href="#">Create an account</a> to post.</p>
             </div>
             <div className = "GreyBackground " style={{padding:'0px'}}>
-            {/* If user is signed in and on they are on the Home Page || their own account page*/}<NewPost/>
+            {/* If user is signed in*/}<NewPost/>
             <div className = "GreyBackground feedWrapper">
-               
+               {/* Add logic to show Users instead of Posts  */}
                 <Posts/>
-                {/* replace <Posts/> with {props.map((prop:any) => (
-                    <Post key={prop.id} prop={prop}/>
-                ))}*/}
+                <Users/>
                
             </div>
             </div>
