@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../index.scss';
-import './LandingPage.css';
+import './LandingPage.scss';
 import { LandingPane } from '../../components/LandingPane/LandingPane'
 import { Feed } from '../../components/Feed/Feed'
 

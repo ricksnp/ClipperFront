@@ -1,0 +1,16 @@
+$commonColor: white;
+
+$commonHeight: '1000px';
+
+#div1 {
+    height: $commonHeight;
+}
+
+#div2 {
+    height: $commonHeight;
+    color: $commonColor;
+}
+
+#div3 {
+    color: $commonColor;
+}

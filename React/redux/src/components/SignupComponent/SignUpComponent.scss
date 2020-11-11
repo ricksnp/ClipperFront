@@ -1,0 +1,23 @@
+$commonColor:  #202430;
+
+#commonColor {
+    color: $commonColor;
+}
+
+#commonBackground {
+    background: $commonColor;
+}
+
+
+$formPosition: left;
+
+#theFormPosition {
+    text-align: $formPosition;
+}
+
+#innerDiv {
+    color: "#202430";
+    font-size: "30px";
+    font-weight: "bold";
+}
+
