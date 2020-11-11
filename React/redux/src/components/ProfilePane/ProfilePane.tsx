@@ -1,19 +1,20 @@
 import React from 'react';
 import userPic from './../../Assets/Liked-Dark-Theme.png'
+import './ProfilePane.scss'
 
 export default function LandingPane(){
     return(
-        <div className ="BlueBackground col-md-3 d-none d-md-block" style={{float:'left',height: '100%'}}>
+        <div className ="BlueBackground col-md-3 d-none d-md-block" id = 'outerDiv'>
             <br/>
             <br/>
             <br/>
             <div>
-                <p style={{textAlign:"right", paddingRight:"20%"}}><a>Edit</a></p>
-                <img src={userPic} style={{height:'150px', width:'150px', display:"block", marginLeft:'auto', marginRight:'auto', borderRadius:'50%', border:'2px solid white'}} className = "Logo-Large"/>
-                <h2 style={{textAlign:'center'}}>Clipper User</h2>
+                <p id= 'pTag'><a>Edit</a></p>
+                <img src={userPic} id = 'imgTag' className = "Logo-Large"/>
+                <h2 id = 'h2Tag'>Clipper User</h2>
             </div>
             <br/>
-            <div style={{textAlign:'left', padding:'20px', paddingLeft:'30px'}}>
+            <div id = 'div1'>
                 <strong>Bio:</strong>
                 <p>Welcome to <strong>Clipper</strong>, the worlds newest social network.</p>
                 <p>Like our namesake sailing vessels of old, Clipper is revolutionizing the way that 

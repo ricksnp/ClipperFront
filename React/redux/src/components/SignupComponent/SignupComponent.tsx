@@ -3,6 +3,7 @@ import light from '../../Assets/Clipper Logo Light-Theme.png'
 import { Form } from 'reactstrap';
 import { FormControl } from 'react-bootstrap';
 import Axios from 'axios';
+import './SignupComponent'
 
 
 export function SignupComponent() {
@@ -40,45 +41,45 @@ export function SignupComponent() {
     };
 
     return (
-        <Form validated={validated ? 1 : 0} onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
+        <Form validated={validated ? 1 : 0} onSubmit={handleSubmit} id = 'theFormPosition'>
             <div className="logoarea pt-5 pb-5 row" >
-                <a href="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></a><div style={{ color: "#202430", fontSize: "30px", fontWeight: "bold" }}>Clipper</div>
+                <a href="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></a><div id = 'innerDiv'>Clipper</div>
             </div>
             <br></br>
-            <h3 style={{ color: "#202430" }}>Sign Up</h3>
+            <h3 id = 'commonColor'>Sign Up</h3>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>Username</label>
+                <label id = 'commonColor'>Username</label>
                 <FormControl type="text" required className="form-control" placeholder="Enter a username" name="username" />
             </div>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>First name</label>
+                <label id = 'commonColor'>First name</label>
                 <FormControl type="text" required className="form-control" placeholder="Enter a username" name="firstname" />
             </div>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>Last name</label>
+                <label id = 'commonColor'>Last name</label>
                 <FormControl type="text" required className="form-control" placeholder="Enter a username" name="lastname" />
             </div>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>Email address</label>
+                <label id = 'commonColor'>Email address</label>
                 <FormControl type="email" required className="form-control" placeholder="Enter email" name="email" />
             </div>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>Password</label>
+                <label id = 'commonColor'>Password</label>
                 <FormControl type="password" required className="form-control" placeholder="Enter password" name="password" />
             </div>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>Confirm Password</label>
+                <label id = 'commonColor'>Confirm Password</label>
                 <FormControl type="password" required className="form-control" placeholder="Re-enter password" />
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block" style={{ background: "#202430" }}>Submit</button>
-            <p className="forgot-password text-right" style={{ color: "#202430" }} >
+            <button type="submit" className="btn btn-primary btn-block" id = 'commonBackground'>Submit</button>
+            <p className="forgot-password text-right" id = 'commonColor' >
                 Already have an account? <a href="/login">Login</a>
             </p>
         </Form>
