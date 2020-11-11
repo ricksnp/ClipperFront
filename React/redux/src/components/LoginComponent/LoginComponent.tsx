@@ -11,6 +11,7 @@ import { axiosInstance } from '../../_util/axiosConfig';
 import * as t from '../../_action.types/actionTypes'
 import Axios from 'axios';
 import { queries } from '@testing-library/react';
+import './LoginComponent.scss';
 
 
 function LoginComponent(props: any) {
@@ -52,20 +53,20 @@ function LoginComponent(props: any) {
                 <a href="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></a><div style={{ color: "#202430", fontSize: "30px", fontWeight: "bold" }}>Clipper</div>
             </div>
             <br></br>
-            <h3 style={{ color: "#202430" }}>Sign In</h3><br />
+            <h3 id = 'commonColor'>Sign In</h3><br />
 
             <div className="form-group" >
-                <label style={{ color: "#202430" }}>Username</label>
+                <label>Username</label>
                 <input type="text" required className="form-control" placeholder="Enter username" name="username" />
             </div>
 
             <div className="form-group">
-                <label style={{ color: "#202430" }}>Password</label>
+                <label>Password</label>
                 <FormControl type="password" required className="form-control" placeholder="Enter password" name="password" />
             </div>
 
             <button type="submit" className="btn btn-primary btn-block" style={{ background: "#202430" }}>Submit</button>
-            <p className="forgot-password text-right" style={{ color: "#202430" }} >
+            <p className="forgot-password text-right" id ='forgot'>
                 <span>Forgot  <a href="/reset-password">password? </a></span>
                 Need an <a href="/signup">account?</a>
             </p>
