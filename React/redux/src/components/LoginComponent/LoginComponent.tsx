@@ -1,76 +1,81 @@
 
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import light from '../../Assets/Clipper Logo Light-Theme.png'
-import { login } from '../../_actions/index'
-import { store } from '../../Store'
+import { connect, useDispatch, useSelector } from 'react-redux';
+import light from '../../Assets/Clipper Logo Light-Theme.png';
+import { login } from '../../_actions/index';
 import { Form } from 'reactstrap';
 import { FormControl } from 'react-bootstrap';
-import { getPosts } from '../../_util/APIUtility';
-import { axiosInstance } from '../../_util/axiosConfig';
-import * as t from '../../_action.types/actionTypes'
-import Axios from 'axios';
-import { queries } from '@testing-library/react';
 import './LoginComponent.scss';
+import { Link, Redirect } from 'react-router-dom';
+import { IRootState } from '../../_reducers';
+import { axiosInstance } from '../../_util/axiosConfig';
+import { IUser } from '../../_reducers/UserReducer';
 
+export const selectCurrentUser = (state:IRootState) => state.userState.currentUser;
 
 function LoginComponent(props: any) {
 
-    const [validated, setValidated] = useState(false);
+    const user = useSelector(selectCurrentUser);
+    const dispatch = useDispatch();
 
+    const [validated, setValidated] = useState(user != null);
+    let failed = false;
+    
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.stopPropagation();
         }
-        setValidated(true);
 
-        const user = {
+        const userDetails = {
             username: event.currentTarget["username"].value,
             password: event.currentTarget["password"].value
         }
 
-        const headers = {
-            "Access-Control-Allow-Origin": "*"
-        }
+        // const headers = {
+        //     "Access-Control-Allow-Origin": "*"
+        // }
 
-        Axios.post("http://localhost:8080/Clipper/login.json", user).then((response) => {
-            console.log(response);
-        }, (error) => {
-            console.log(error);
+        dispatch(async (dispatchInStore:any, getState:() => IRootState) => {
+            const currentUser:IUser = (await axiosInstance.post("/login.json", userDetails)).data;
+
+            console.log(currentUser);
+
+            dispatchInStore({type:"REGISTER", payload: currentUser});
+
+            setValidated(getState().userState.currentUser != null);
+            failed = validated;
         });
     };
 
-    useEffect(() => {
-        console.log("in the use effect")
-        //props.loginUsers();
-    });
-
     return (
-        <Form validated={validated ? 1 : 0} onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
-            <div className="logoarea pt-5 pb-5 row" >
-                <a href="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></a><div style={{ color: "#202430", fontSize: "30px", fontWeight: "bold" }}>Clipper</div>
-            </div>
-            <br></br>
-            <h3 id = 'commonColor'>Sign In</h3><br />
+        <>{ validated ? <Redirect to="/home" /> :
+            <Form validated={validated ? 1 : 0} onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
+                <div className="logoarea pt-5 pb-5 row" >
+                    <Link to="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></Link><div style={{ color: "#202430", fontSize: "30px", fontWeight: "bold" }}>Clipper</div>
+                </div>
+                <br></br>
+                <h3 id = 'commonColor'>Sign In</h3><br />
 
-            <div className="form-group" >
-                <label id = 'commonColor'>Username</label>
-                <input type="text" required className="form-control" placeholder="Enter username" name="username" />
-            </div>
+                <div className="form-group" >
+                    <label id = 'commonColor'>Username</label>
+                    <input type="text" required className="form-control" placeholder="Enter username" name="username" />
+                </div>
 
-            <div className="form-group">
-                <label id = 'commonColor'>Password</label>
-                <FormControl type="password" required className="form-control" placeholder="Enter password" name="password" />
-            </div>
+                <div className="form-group">
+                    <label id = 'commonColor'>Password</label>
+                    <FormControl type="password" required className="form-control" placeholder="Enter password" name="password" />
+                </div>
 
-            <button type="submit" className="btn btn-primary btn-block" id = 'commonBackground'>Submit</button>
-            <p className="forgot-password text-right" id = 'commonColor'>
-                <span>Forgot  <a href="/reset-password">password? </a></span>
-                Need an <a href="/signup">account?</a>
-            </p>
-        </Form>
+                <button type="submit" className="btn btn-primary btn-block" id = 'commonBackground'>Submit</button>
+                <p className="forgot-password text-right" id = 'commonColor'>
+                    <span>Forgot  <Link to="/reset-password">password? </Link></span>
+                    Need an <Link to="/signup">account?</Link><br />{failed ? <span>Invalid user credentials!</span> : <></>}
+                </p>
+            </Form>
+        }
+        </>
     );
 }
 

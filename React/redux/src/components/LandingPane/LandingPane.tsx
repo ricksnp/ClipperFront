@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import dark from './../../Assets/Clipper-Logo-Dark-Theme.png'
 
 export function LandingPane(){
@@ -17,7 +18,7 @@ export function LandingPane(){
                 <p>Like our namesake sailing vessels of old, Clipper is revolutionizing the way that 
                     people across the world connect. We simplify and unify the social network 
                     experience by letting anyone add to <i>The Feed</i>. All you need to do is
-                     <a href="d"> create an account</a> and <a href="c">login</a>!</p>
+                     <Link to="/signup"> create an account</Link> and <a href="c">login</a>!</p>
             </div>
 
         </div>

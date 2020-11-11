@@ -7,5 +7,7 @@ import Axios from "axios";
  * these properties can be overridden.
  */
 export const axiosInstance = Axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com",
+    // baseURL: "https://jsonplaceholder.typicode.com",
+    // baseURL: "http://18.221.213.132:8081/Clipper",
+    baseURL: "http://localhost:8080/Clipper/",
 });

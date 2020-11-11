@@ -1,15 +1,59 @@
 import * as t from '../_action.types/actionTypes';
 
-const initialState: any = {
-    users: [{}]
-};
+export interface IPostImage{
+    id:number,
+    imageLink:string,
+    post?:IPost
+}
 
-export const UserReducer = (state = initialState, action: any): any => {
+export interface ILike{
+    id:number
+    user?:IUser,
+    post?:IPost
+}
+
+export interface IPost{
+    id:number,
+    user?:IUser,
+    textContent:string,
+    images:IPostImage[]
+    likes:ILike[]
+}
+
+export interface IUser{
+    id:number,
+    username:string,
+    password?:string,
+    firstName:string,
+    lastName:string,
+    email:string,
+    bio:string|null,
+    pfpLink:string,
+    posts:IPost[]|null,
+    likes:ILike[]|null
+}
+
+export interface IUserState{
+    currentUser:IUser|null,
+    viewedUser:IUser|null
+}
+
+const initialState:IUserState = {currentUser: null, viewedUser: null};
+
+export const userReducer = (state:IUserState = initialState, action: any): any => {
     switch (action.type) {
-        case t.SUCCESS:
+        case "REGISTER":
+        case "LOGIN":
+            const loggedInUser:IUser = action.payload;
             return {
-                users: state.users, ...action.payload
+                currentUser: {... loggedInUser},
+                viewedUser: {... loggedInUser},
             };
+        case "LOGOUT":
+            return{
+                currentUser: null,
+                viewedUser: null
+            }
         default:
             return state;
     }

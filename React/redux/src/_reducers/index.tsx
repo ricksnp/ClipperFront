@@ -1,4 +1,9 @@
 import * as React from 'react';
 import { combineReducers } from 'redux';
-import { UserReducer } from './UserReducer'
-export const rootReducer = combineReducers({ UserReducer })
+import { IUserState, userReducer } from './UserReducer'
+
+export interface IRootState{
+    userState: IUserState
+}
+
+export const rootReducer = combineReducers<IRootState>({ userState: userReducer })
