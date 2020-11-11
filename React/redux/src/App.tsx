@@ -7,6 +7,7 @@ import LoginPage from "./views/LoginPage";
 import SignupPage from './views/SignupPage'
 import ResetPassword from "./views/ResetPassword"
 import HomePage from "./views/HomePage/HomePage";
+import Upload  from "./components/Upload";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <div >
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/reset-password" component={ResetPassword} />
