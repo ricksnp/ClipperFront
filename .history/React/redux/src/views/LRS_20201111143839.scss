@@ -1,7 +1,5 @@
-$commonColor: white;
-$sideBarColor: #202430;
-
-$commonHeight: 1000px;
+$commonColor: #202430;
+$sideBarColor: $commonHeight: 1000px;
 
 #div1 {
     height: $commonHeight;
@@ -10,5 +8,8 @@ $commonHeight: 1000px;
 #div2 {
     height: $commonHeight;
     color: $commonColor;
-    background: #202430;
+}
+
+#div3 {
+    color: $commonColor;
 }

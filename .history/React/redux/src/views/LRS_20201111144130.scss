@@ -9,6 +9,13 @@ $commonHeight: 1000px;
 
 #div2 {
     height: $commonHeight;
+    color: $sideBarColor;
+}
+
+#div3 {
     color: $commonColor;
-    background: #202430;
+}
+
+#sideBar {
+    color: $sideBarColor;
 }
