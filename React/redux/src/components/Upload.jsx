@@ -15,8 +15,8 @@ const Upload=()=> {
       bucketName: "clipperrevature",
       dirName: "photos",
       region : "us-east-1",
-      accessKeyId:"AKIARKUKJ6TY3AFJJPG6",
-      secretAccessKey: "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",
+      accessKeyId:"",
+      secretAccessKey: "",
       s3Url:"https://clipperrevature.s3.amazonaws.com/"
     
    };
