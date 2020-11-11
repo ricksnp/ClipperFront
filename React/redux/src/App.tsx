@@ -14,7 +14,7 @@ function App() {
       <div >
         <BrowserRouter>
           <Switch>
-            <Route path="/landing-page" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/reset-password" component={ResetPassword} />
