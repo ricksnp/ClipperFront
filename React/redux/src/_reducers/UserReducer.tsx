@@ -27,7 +27,7 @@ export interface IUser{
     firstName:string,
     lastName:string,
     email:string,
-    bio:string|null,
+    bio:string,
     pfpLink:string,
     posts:IPost[]|null,
     likes:ILike[]|null
@@ -44,8 +44,11 @@ export const userReducer = (state:IUserState = initialState, action: any): any =
     switch (action.type) {
         case "REGISTER":
         case "LOGIN":
-            const loggedInUser:IUser = action.payload;
-            return {
+            const loggedInUser:IUser|null = action.payload;
+
+            if(loggedInUser == null)
+                return {currentUser: null, viewedUser: null};
+            else return {
                 currentUser: {... loggedInUser},
                 viewedUser: {... loggedInUser},
             };

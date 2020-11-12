@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import light from '../../Assets/Clipper Logo Light-Theme.png'
+import light from '../../Assets/Clipper Logo Light-Theme.png';
 import { Form } from 'reactstrap';
 import { FormControl } from 'react-bootstrap';
-import Axios from 'axios';
-import './SignupComponent'
+import './SignupComponent';
 import { IRootState } from '../../_reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from '../../_reducers/UserReducer';
 import { axiosInstance } from '../../_util/axiosConfig';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-
-export const selectCurrentUser = (state:IRootState) => state.userState.currentUser;
+import { selectCurrentUser } from '../LoginComponent/LoginComponent';
 
 export function SignupComponent() {
 

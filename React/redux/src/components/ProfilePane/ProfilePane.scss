@@ -5,7 +5,7 @@
 
 #pTag {
     text-align: right;
-    padding-right:20%;
+    padding-right:10%;
 }
 
 #imgTag {
@@ -22,8 +22,57 @@
     text-align:center;
 }
 
-#div1 {
+.clipper-profile-pane-info {
     text-align:left;
-     padding:20px;
-     padding-left:30px;
+    margin:20px;
+    margin-left:30px;
+}
+
+
+.niceLinks {
+    color: purple;
+}
+
+#backButton{
+    margin-left: 20px;
+}
+
+
+
+#clipper-info-edit-begin{
+    border:2px solid white;
+    padding:2px;
+    color: white;
+    background-color: #202430;
+    line-height: 1;
+
+    :hover{
+        background-color: aqua;
+        cursor: pointer;
+    }
+}
+
+#clipper-user-editing-form{
+    background-color: #bbb;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 2px solid #202430;
+    line-height: 1.5;
+}
+
+.clipper-user-editing-form-element{
+    margin-bottom: 10px;
+    color: #202430;
+}
+
+#clipper-pfp-upload{
+    display:none;
+}
+
+#clipper-pfp-upload-wrapper{
+    background-color: #202430;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
 }

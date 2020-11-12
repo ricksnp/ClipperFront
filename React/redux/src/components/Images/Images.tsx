@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Images.scss';
 import {
   Carousel,
   CarouselItem,
@@ -57,15 +58,9 @@ const Example = (props:any) => {
   });
 
   return (
-      <div style={{margin:'auto'}}>
-          <style>
-        {
-          `.custom-tag {
-              max-width: 100%;
-              height: 500px;
-              background: black;
-            }`
-        }
+      <div className = 'theDivMachine'>
+          <style className = "custom-tag">
+       
         </style>
     <Carousel
       activeIndex={activeIndex}

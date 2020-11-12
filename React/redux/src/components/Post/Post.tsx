@@ -1,10 +1,36 @@
-import React from 'react';
-import dark from './../../Assets/Clipper-Logo-Dark-Theme.png'
-import like from './../../Assets/Like-Dark-Theme.png'
-import Images from './../Images/Images'
+import React, { useState } from 'react';
+import dark from './../../Assets/Clipper-Logo-Dark-Theme.png';
+import unlike from './../../Assets/Like-Dark-Theme.png';
+import like from './../../Assets/Liked-Dark-Theme.png';
+import Images from './../Images/Images';
+import { Link } from 'react-router-dom';
+import { axiosInstance } from '../../_util/axiosConfig';
+
 import './Post.scss'
 
+
 export function Post(prop:any){
+
+    const [liked, setLiked] = useState(false);
+
+    function handleClick(e:any) {
+        e.preventDefault();
+        console.log('The link was clicked.');
+
+        axiosInstance.post('/addLike.json', {id:0, post_id:1, user_id:1})
+        .then(resp => {
+            setLiked(true);
+            console.log(resp.data);
+        })
+        .catch(err => {
+            // Handle Error Here
+            console.error(err);
+        });
+        return liked;
+
+    };
+
+
     return(
         <div className = "Post row " id= 'outerDiv'>
             <div id='div1U'>
@@ -15,7 +41,7 @@ export function Post(prop:any){
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div className="col-2" >
-            <a href="#" className='like'><img src={like} id = 'anchorTwo'></img></a>          
+            <img src={liked?like:unlike} id = 'anchorTwo' onClick={handleClick}></img>         
             </div>
         </div>
     )

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LoginComponent from '../components/LoginComponent/LoginComponent';
 import './LRS.scss'
-
 export default function LoginPage() {
     return (
 

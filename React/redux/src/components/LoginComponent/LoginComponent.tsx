@@ -33,16 +33,15 @@ function LoginComponent(props: any) {
             password: event.currentTarget["password"].value
         }
 
-        // const headers = {
-        //     "Access-Control-Allow-Origin": "*"
-        // }
-
         dispatch(async (dispatchInStore:any, getState:() => IRootState) => {
             const currentUser:IUser = (await axiosInstance.post("/login.json", userDetails)).data;
 
-            console.log(currentUser);
+            const userIsEmpty:boolean = Object.keys(currentUser).length == 0;
 
-            dispatchInStore({type:"REGISTER", payload: currentUser});
+            console.log("current user: " + currentUser);
+            console.log("is empty? " + userIsEmpty);
+
+            dispatchInStore({type:"REGISTER", payload: userIsEmpty ? null : currentUser});
 
             setValidated(getState().userState.currentUser != null);
             failed = validated;

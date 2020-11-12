@@ -18,6 +18,9 @@
     height:100px;
     border-radius:50%; 
     border:2px solid #FFF;
+    :hover{
+        cursor: pointer;
+    }
 }
 
 #firstAndLastDiv {
@@ -29,4 +32,31 @@
     display:flex;
     align-items:center;
     padding:10px;
+}
+
+.clipper-new-post-margin-button{
+    display:flex;
+    align-items:center;
+    :hover{
+        cursor: pointer;
+    }
+}
+
+#clipper-add-post-image-form{
+    text-align: center;
+}
+
+#clipper-add-post-image{
+    display:none
+}
+
+#clipper-add-post-image-label{
+    width:90px;
+    height:90px;
+    border-radius:50%; 
+    border:2px solid #FFF;
+    color: #FFF;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 120%;
 }

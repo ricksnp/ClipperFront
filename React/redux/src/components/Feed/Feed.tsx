@@ -1,25 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { selectCurrentUser } from '../LoginComponent/LoginComponent';
 import Posts from '../Posts/Posts';
-import TextEditor from '../TextEditor/TextEditor';
 import { Users } from '../Users/Users';
 import dark_theme_logo from './../../Assets/Clipper-Logo-Dark-Theme.png';
 import './../../views/LandingPage/LandingPage.scss';
 import { NewPost } from './../NewPost/NewPost';
-
+import './Feed.scss';
 
 export function Feed(props:any){
+    const you = useSelector(selectCurrentUser);
+
     return(
-        <div className = "col-md-9" style={{padding:'0px'}}>
-            <div className = "BlueBackground row" style={{display:"flex", alignItems:"center"}}>
+        <div className = "col-md-9 outerDiv" >
+            <div className = "BlueBackground row secondDiv" >
                 <div className="col-4"></div>
-                <img src={dark_theme_logo} className = "logo-small mx-auto" style={{width: "50px", height: "50px", padding:'10px', display:"block"}}></img>
+                <img src={dark_theme_logo} className = "logo-small mx-auto theImage" ></img>
                 <span>
-                    <span><label>Search Users: </label><input type="text" placeholder="Find User"></input> <input type="submit" value="Search"/></span>
+                    <span><input type="text" placeholder="Find User"></input> <button type="submit" className="btn btn-success">Search</button></span>
                 </span>
-                <p className='d-md-none d-l-none d-xl-none' style={{textAlign: "center"}}>Welcome to <strong>Clipper!</strong><br/>Please <a href="#">Login</a> or <a href="#">Create an account</a> to post.</p>
+                <p className='d-md-none d-l-none d-xl-none thePtag'>Welcome to <strong>Clipper!</strong><br/>Please <Link to="/login">Login</Link> or <Link to="/signup">Create an account</Link> to post.</p>
             </div>
-            <div className = "GreyBackground " style={{padding:'0px'}}>
-            {/* If user is signed in*/}<NewPost/>
+            <div className = "GreyBackground outerDiv" >
+            {/* If user is signed in*/
+            you ? <NewPost/> : <></>}
             <div className = "GreyBackground feedWrapper">
                {/* Add logic to show Users instead of Posts  */}
                 <Posts/>
