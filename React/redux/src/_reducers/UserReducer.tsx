@@ -44,6 +44,7 @@ export const userReducer = (state:IUserState = initialState, action: any): any =
     switch (action.type) {
         case "REGISTER":
         case "LOGIN":
+        case "UPDATE_CURRENT_USER":
             const loggedInUser:IUser|null = action.payload;
 
             if(loggedInUser == null)
@@ -52,6 +53,20 @@ export const userReducer = (state:IUserState = initialState, action: any): any =
                 currentUser: {... loggedInUser},
                 viewedUser: {... loggedInUser},
             };
+        case "MAKE_POST":
+            if(state.currentUser == null)
+                return state;
+            const newPost:IPost = action.payload;
+
+            return{
+                ... state,
+                currentUser:{
+                    ... state.currentUser,
+                    posts: state.currentUser.posts ?
+                        [...state.currentUser.posts, newPost]
+                        : [newPost]
+                }
+            }
         case "LOGOUT":
             return{
                 currentUser: null,

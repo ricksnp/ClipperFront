@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { IRootState } from '../../_reducers';
 import { IUser } from '../../_reducers/UserReducer';
+import { axiosInstance } from '../../_util/axiosConfig';
 import { selectCurrentUser } from '../LoginComponent/LoginComponent';
 import userPic from './../../Assets/Liked-Dark-Theme.png'
-import './ProfilePane.scss'
+import './ProfilePane.scss';
+
+export const selectViewedUser = (state:IRootState) => state.userState.viewedUser;
 
 export default function LandingPane(){
-    const currentUserData:IUser|null = useSelector(selectCurrentUser);
-    const you  = currentUserData as IUser;
+    const dispatch = useDispatch();
     
+    const currentUserData:IUser|null = useSelector(selectCurrentUser);
+    const currentUser:IUser = currentUserData as IUser;
+
+    const viewedUserData:IUser|null = useSelector(selectViewedUser);
+    const viewedUser:IUser = viewedUserData as IUser;
+    
+    let isUsersOwnProfile:boolean = false;
+
     const [isEditing, setEditing] = useState(false);
-    const [bioState, setBioState] = useState(you.bio);
-    const [fNameState, setFNameState] = useState(you.firstName);
-    const [lNameState, setLNameState] = useState(you.lastName);
-    const [emailState, setEmailState] = useState(you.email);
+
+    const [bioState, setBioState] = useState(viewedUser.bio);
+    const [fNameState, setFNameState] = useState(viewedUser.firstName);
+    const [lNameState, setLNameState] = useState(viewedUser.lastName);
+    // const [emailState, setEmailState] = useState(viewedUser.email);
     
     let pfpLink:string;
     let biography:string;
@@ -27,14 +39,39 @@ export default function LandingPane(){
         fName = "Clipper";
         lName = "User";
     } else{
-        const you:IUser = (currentUserData as IUser);
+        pfpLink = viewedUser.pfpLink;
+        biography = viewedUser.bio;
+        fName = viewedUser.firstName;
+        lName = viewedUser.lastName;
 
-        pfpLink = you.pfpLink;
-        biography = you.bio;
-        fName = you.firstName;
-        lName = you.lastName;
+        isUsersOwnProfile = (currentUserData != null && viewedUser.id == currentUser.id);
     }
 
+    const submitUserChanges = (event:any) => {
+        event.preventDefault();
+        
+        const editedUser:IUser = {
+            ... currentUser,
+            bio: bioState,
+            firstName: fNameState,
+            lastName: lNameState
+        }
+
+        console.log("Edited user made!");
+
+        if(currentUser.bio == editedUser.bio
+            && currentUser.firstName == editedUser.firstName
+            && currentUser.lastName == editedUser.lastName)
+            return;
+
+        console.log("Dispatching!");
+        
+        dispatch(async (dispatchInStore:any, getState:() => IRootState) => {
+            const newCurrentUser:IUser = (await axiosInstance.post("/updateInfo.json", editedUser)).data;
+
+            dispatchInStore({type:"UPDATE_CURRENT_USER", payload: newCurrentUser});
+        });
+    }
 
 
     return(
@@ -47,7 +84,7 @@ export default function LandingPane(){
                 <p id='pTag'>
                     {isEditing ?
                         <span>Editing!</span> :
-                        <>{currentUserData ?
+                        <>{currentUserData && isUsersOwnProfile ?
                             <button id="clipper-info-edit-begin" onClick={() => setEditing(true)}>Edit Your Info</button> :
                         <></>
                         }</>
@@ -65,14 +102,24 @@ export default function LandingPane(){
                 </div>
 
                 <div className="clipper-user-editing-form-element">
-                    <span>Edit your bio:</span>
-                    <textarea className="form-control" rows={4}></textarea>
+                    <label>Edit your bio:</label>
+                    <textarea className="form-control" rows={4} value={bioState} onChange={(e) => setBioState(e.target.value)}></textarea>
                 </div>
-                <button onClick={() => setEditing(false)}>Cease Editing!</button>
+
+                <div className="clipper-user-editing-form-element">
+                    <label>Change First Name:</label>
+                    <input type="text" className="form-control" value={fNameState} onChange={(e) => setFNameState(e.target.value)} />
+                </div>
+
+                <div className="clipper-user-editing-form-element">
+                    <label>Change Last Name:</label>
+                    <input type="text" className="form-control" value={lNameState} onChange={(e) => setLNameState(e.target.value)} />
+                </div>
+                <button onClick={(e) => { submitUserChanges(e); setEditing(false);}}>Cease Editing!</button>
             </form>
             :
             <div className='clipper-profile-pane-info'>
-                <strong>Bio:</strong>
+                <strong>Bio: </strong>
                 {currentUserData ? biography : <><p>Welcome to <strong>Clipper</strong>, the worlds newest social network.</p>
                     <p>Like our namesake sailing vessels of old, Clipper is revolutionizing the way that
                                 people across the world connect. We simplify and unify the social network
