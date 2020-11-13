@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import light from '../../Assets/Clipper Logo Light-Theme.png';
 import { Form } from 'reactstrap';
 import { FormControl } from 'react-bootstrap';
-import './SignupComponent.scss';
+import './SignUpComponent.scss';
 import { IRootState } from '../../_reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from '../../_reducers/UserReducer';
