@@ -114,7 +114,7 @@ export default function LandingPane(){
             <br/>
             <br/>
             <div>
-                <a href= '/login'><button type="button" className="btn btn-light" id="backButton">Logout</button></a>
+                <a href= '/'><button type="button" className="btn btn-light" id="backButton">Logout</button></a>
                 <p id='pTag'>
                     {isEditing ?
                         <span>Editing!</span> :
