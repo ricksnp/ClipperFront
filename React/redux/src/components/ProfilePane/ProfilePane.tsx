@@ -73,6 +73,37 @@ export default function LandingPane(){
         });
     }
 
+    const inputImage = async (target:any) => {
+        
+        const file = target.files ? target.files[0] : null;
+        
+        if(file == null)
+            return;
+        
+        uploadedImage.append("imageFile", file);
+
+        dispatch(async (dispatchInStore:any, getState:() => IRootState) => {
+            let newImageLink:string = "";
+            try{
+                newImageLink = (await axiosInstance.post("/testImageReceipt.json", uploadedImage)).data;
+            } catch(err){
+                console.log(err);
+            }
+
+            if(!newImageLink)
+                return;
+
+            const editedUser:IUser = {
+                ... currentUser,
+                pfpLink: newImageLink
+            }
+
+            const newEditedUser:IUser = (await axiosInstance.post("/updateInfo.json", editedUser)).data;
+
+            dispatchInStore({type:"UPDATE_CURRENT_USER", payload: newEditedUser});
+        })
+    }
+
 
     return(
         <div className ="BlueBackground col-md-3 d-none d-md-block" id = 'outerDiv'>
@@ -97,7 +128,7 @@ export default function LandingPane(){
             {isEditing ? <form className='clipper-profile-pane-info' id='clipper-user-editing-form'>
                 <div className="clipper-user-editing-form-element">
                     <label id="clipper-pfp-upload-wrapper" className="btn">Upload Profile Picture
-                        <input type="file" accept="image/*" id="clipper-pfp-upload"/>
+                        <input type="file" accept="image/*" id="clipper-pfp-upload" onChange={(e) => inputImage(e.currentTarget)}/>
                     </label>
                 </div>
 
