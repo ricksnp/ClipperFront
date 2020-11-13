@@ -163,9 +163,14 @@ export function Feed(){
         postGet();
     }
 
-    const setViewedUser = (input:string) => {
-        dispatch((dispatchInStore:any, getState:()=>IRootState) => {
-                // const newFocus:IUser|null = (await axiosInstance.get(""));
+    const setViewedUser = async (input:string) => {
+        dispatch(async (dispatchInStore:any, getState:()=>IRootState) => {
+                const newFocus:IUser|null = (await axiosInstance.get(`/user/profile/${input}.json`)).data;
+
+                if(!newFocus)
+                    return;
+
+                dispatchInStore({type:"UPDATE_VIEWED_USER", payload: newFocus});
             }
         );
 

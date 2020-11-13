@@ -69,6 +69,11 @@ export const userReducer = (state:IUserState = initialState, action: any): any =
                 viewedUser:{ ...newCurrentUser},
                 currentUser:{ ...newCurrentUser}
             }
+        case 'UPDATE_VIEWED_USER':
+            return{
+                ... state,
+                viewedUser: {... action.payload}
+            }
         case "LOGOUT":
             return{
                 currentUser: null,
