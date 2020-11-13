@@ -9,5 +9,6 @@ import Axios from "axios";
 export const axiosInstance = Axios.create({
     // baseURL: "https://jsonplaceholder.typicode.com",
     // baseURL: "http://18.221.213.132:8081/Clipper",
-    baseURL: "http://localhost:8080/Clipper/",
+    // baseURL: "http://localhost:8080/"
+    baseURL: "http://3.139.66.26:8081/Clipper/",
 });

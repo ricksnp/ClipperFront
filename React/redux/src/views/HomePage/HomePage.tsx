@@ -7,7 +7,7 @@ import {Feed} from './../../components/Feed/Feed'
 
 const HomePage = () => {
     return(
-        <div className="row wrapper GreyBackground noScroll">
+        <div className="row wrapper GreyBackground noScroll HomePage Component">
             <ProfilePane/>
             <Feed/>
         </div>

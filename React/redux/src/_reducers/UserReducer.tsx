@@ -58,14 +58,16 @@ export const userReducer = (state:IUserState = initialState, action: any): any =
                 return state;
             const newPost:IPost = action.payload;
 
-            return{
-                ... state,
-                currentUser:{
-                    ... state.currentUser,
+            const newCurrentUser = {
+                ... state.currentUser,
                     posts: state.currentUser.posts ?
-                        [...state.currentUser.posts, newPost]
+                        [newPost, ...state.currentUser.posts]
                         : [newPost]
-                }
+            };
+
+            return{
+                viewedUser:{ ...newCurrentUser},
+                currentUser:{ ...newCurrentUser}
             }
         case "LOGOUT":
             return{

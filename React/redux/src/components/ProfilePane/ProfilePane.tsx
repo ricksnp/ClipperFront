@@ -115,19 +115,19 @@ export default function LandingPane(){
                     <label>Change Last Name:</label>
                     <input type="text" className="form-control" value={lNameState} onChange={(e) => setLNameState(e.target.value)} />
                 </div>
-                <button onClick={(e) => { submitUserChanges(e); setEditing(false);}}>Cease Editing!</button>
+                <button onClick={(e) => { submitUserChanges(e); setEditing(false);}} type="button" className="btn btn-success" >Submit</button>
             </form>
             :
             <div className='clipper-profile-pane-info'>
-                <strong>Bio: </strong>
+                <strong>Bio: </strong><br />
                 {currentUserData ? biography : <><p>Welcome to <strong>Clipper</strong>, the worlds newest social network.</p>
                     <p>Like our namesake sailing vessels of old, Clipper is revolutionizing the way that
                                 people across the world connect. We simplify and unify the social network
                         experience by letting anyone add to <i>The Feed</i>. All you need to do is
                         <Link to="/signup" className="clipper-landing-link"> create an account</Link> and <Link to="/login" className="clipper-landing-link">login</Link>!</p></>}
                 <br/>
-                <strong>Most Recent Post:</strong>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                {/* <strong>Most Recent Post:</strong> */}
+                {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> */}
             </div>
             }
         </div>

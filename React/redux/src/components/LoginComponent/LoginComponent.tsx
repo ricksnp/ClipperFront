@@ -13,7 +13,7 @@ import { IUser } from '../../_reducers/UserReducer';
 
 export const selectCurrentUser = (state:IRootState) => state.userState.currentUser;
 
-function LoginComponent(props: any) {
+export default function LoginComponent(props: any) {
 
     const user = useSelector(selectCurrentUser);
     const dispatch = useDispatch();
@@ -78,11 +78,11 @@ function LoginComponent(props: any) {
     );
 }
 
-const mapStateToProps = (state: any) => {
-    return { users: state.users };
-}
+// const mapStateToProps = (state: any) => {
+//     return { users: state.users };
+// }
 
-const mapDispatchToProps = {
-    login
-}
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+// const mapDispatchToProps = {
+//     login
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

@@ -16,7 +16,7 @@ import { axiosInstance } from '../../_util/axiosConfig';
 // }
 
 interface INewPostProps{
-    renderFeed:()=>void;
+    renderFeed:()=>void,
 }
 
 export function NewPost(props:INewPostProps){
@@ -65,7 +65,8 @@ export function NewPost(props:INewPostProps){
                 console.log(newPost);
 
                 const successfulPost = (await axiosInstance.post("/addPost.json", newPost)).data;
-
+                
+                setUploadedImage(new FormData());
                 dispatchInStore({type: "MAKE_POST", payload: successfulPost});
 
                 rerender = !rerender;
@@ -75,6 +76,7 @@ export function NewPost(props:INewPostProps){
     }
 
     const inputImage = async (files:any) => {
+        
         const file = files[0];
         
         if(file == null)

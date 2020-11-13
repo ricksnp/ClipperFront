@@ -52,7 +52,13 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/enzyme-to-json": "^1.5.4",
     "@types/react-router-dom": "^5.1.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
     "react-router": "^5.2.0"
   }
 }

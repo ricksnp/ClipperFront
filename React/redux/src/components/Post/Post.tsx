@@ -11,7 +11,8 @@ import { IPost, IUser } from '../../_reducers/UserReducer';
 
 interface IPostProp{
     post:IPost,
-    viewer:IUser|null
+    viewer:IUser|null,
+    global:boolean
 }
 
 export function Post(props:IPostProp){
@@ -55,11 +56,11 @@ export function Post(props:IPostProp){
         });
     };
 
-    console.log(props.post);
+    // console.log(props.post);
 
     return(
-        <div className = "Post row " id= 'outerDiv'>
-            <div id='div1U'>
+        <div className = "Post row " id= 'outerDivU'>
+            <div className="col-2"id='div1U'>
                 <img src={dark /* Should be the profile picture of the user who posted it */} className="Post-Profile-Pic" id= 'anchorOne'/>
             </div>
             <div className = "col row whiteText" id = 'div2U'> {/* Needs contitional statement for Carousel */}

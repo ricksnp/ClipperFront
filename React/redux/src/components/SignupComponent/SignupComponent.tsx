@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import light from '../../Assets/Clipper Logo Light-Theme.png';
 import { Form } from 'reactstrap';
 import { FormControl } from 'react-bootstrap';
-import './SignupComponent';
+import './SignupComponent.scss';
 import { IRootState } from '../../_reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from '../../_reducers/UserReducer';
@@ -56,7 +56,8 @@ export function SignupComponent() {
         <> { validated ? <Redirect to="/home" /> :
             <Form validated={validated ? 1 : 0} onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
                 <div className="logoarea pt-5 pb-5 row" >
-                    <Link to="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></Link><div style={{ color: "#202430", fontSize: "30px", fontWeight: "bold" }}>Clipper</div>
+                    <Link to="/login"><img src={light} height={"48px"} width={"48px"} alt="Logo" /></Link>
+                    <div style={{ color: "#202430", fontSize: "30px", fontWeight: "bold" }}>Clipper</div>
                 </div>
                 <br></br>
                 <h3 style={{ color: "#202430" }}>Sign Up</h3>
@@ -68,14 +69,14 @@ export function SignupComponent() {
 
                 <div className="form-group">
                     <label style={{ color: "#202430" }}>First name</label>
-                    <FormControl type="text" required className="form-control" placeholder="Enter a username" name="firstname" />
+                    <FormControl type="text" required className="form-control" placeholder="Enter first name" name="firstname" />
                 </div>
 
                 <div className="form-group">
                     <label style={{ color: "#202430" }}>Last name</label>
-                    <FormControl type="text" required className="form-control" placeholder="Enter a username" name="lastname" />
+                    <FormControl type="text" required className="form-control" placeholder="Enter last name" name="lastname" />
                 </div>
-
+ 
                 <div className="form-group">
                     <label style={{ color: "#202430" }}>Email address</label>
                     <FormControl type="email" required className="form-control" placeholder="Enter email" name="email" />
