@@ -59,14 +59,14 @@ export default function LandingPane(){
             lastName: lNameState
         }
 
-        console.log("Edited user made!");
+        // console.log("Edited user made!");
 
         if(currentUser.bio == editedUser.bio
             && currentUser.firstName == editedUser.firstName
             && currentUser.lastName == editedUser.lastName)
             return;
 
-        console.log("Dispatching!");
+        // console.log("Dispatching!");
         
         dispatch(async (dispatchInStore:any, getState:() => IRootState) => {
             const newCurrentUser:IUser = (await axiosInstance.post("/updateInfo.json", editedUser)).data;
@@ -89,7 +89,7 @@ export default function LandingPane(){
             try{
                 newImageLink = (await axiosInstance.post("/testImageReceipt.json", uploadedImage)).data;
             } catch(err){
-                console.log(err);
+                // console.log(err);
             }
             setUploadedImage(new FormData());
 

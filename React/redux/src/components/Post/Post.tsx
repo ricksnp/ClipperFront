@@ -32,7 +32,7 @@ export function Post(props:IPostProp){
 
     function handleClick(e:any) {
         e.preventDefault();
-        console.log('The link was clicked.');
+        // console.log('The link was clicked.');
 
         // If you're not logged in, you can't like anything.
         if(!props.viewer)
@@ -48,11 +48,11 @@ export function Post(props:IPostProp){
 
         axiosInstance.post('/addLike.json', newLikeProto)
         .then(resp => {
-            console.log(resp.data);
+            // console.log(resp.data);
         })
         .catch(err => {
             // Handle Error Here
-            console.error(err);
+            // console.error(err);
         });
     };
 

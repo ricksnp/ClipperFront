@@ -30,11 +30,11 @@ export function ResetPassComponent() {
         axiosInstance.post('/resetPass.json', {email:event.currentTarget["email"].value})
         .then(resp => {
             setValidated(true);
-            console.log(resp.data);
+            // console.log(resp.data);
         })
         .catch(err => {
             // Handle Error Here
-            console.error(err);
+            // console.error(err);
         });
 
        if (validated){

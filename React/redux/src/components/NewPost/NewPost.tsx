@@ -29,7 +29,7 @@ export function NewPost(props:INewPostProps){
     const [uploadedImage, setUploadedImage] = useState(new FormData());
 
     const makeClipperPost = (event:any) => {
-        console.log("New upload!");
+        // console.log("New upload!");
 
         event.preventDefault();
 
@@ -43,7 +43,7 @@ export function NewPost(props:INewPostProps){
         setNewPostText('');
         rerender = !rerender;
 
-        console.log(uploadedImage.get("imageFile"));
+        // console.log(uploadedImage.get("imageFile"));
         // console.log(event.currentTarget["imageFile"].files[0].name());
 
         dispatch(async (dispatchInStore:any, getState:() => IRootState) => {
@@ -54,7 +54,7 @@ export function NewPost(props:INewPostProps){
                     console.log(err);
                 }
 
-                console.log(newImageLink);
+                // console.log(newImageLink);
 
                 const newPost = {
                     user_id:newPostProto.user_id,
@@ -62,7 +62,7 @@ export function NewPost(props:INewPostProps){
                     linkOfPic: newImageLink
                 }
 
-                console.log(newPost);
+                // console.log(newPost);
 
                 const successfulPost = (await axiosInstance.post("/addPost.json", newPost)).data;
                 
@@ -82,12 +82,12 @@ export function NewPost(props:INewPostProps){
         if(file == null)
             return;
 
-        console.log("Appending file.");
-        console.log(uploadedImage.get("imageFile"));
+        // console.log("Appending file.");
+        // console.log(uploadedImage.get("imageFile"));
 
         uploadedImage.append("imageFile", file);
 
-        console.log(uploadedImage.get("imageFile"));
+        // console.log(uploadedImage.get("imageFile"));
 
         rerender = !rerender;
     }

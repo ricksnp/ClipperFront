@@ -38,8 +38,8 @@ export default function LoginComponent(props: any) {
 
             const userIsEmpty:boolean = Object.keys(currentUser).length == 0;
 
-            console.log("current user: " + currentUser);
-            console.log("is empty? " + userIsEmpty);
+            // console.log("current user: " + currentUser);
+            // console.log("is empty? " + userIsEmpty);
 
             dispatchInStore({type:"REGISTER", payload: userIsEmpty ? null : currentUser});
 
