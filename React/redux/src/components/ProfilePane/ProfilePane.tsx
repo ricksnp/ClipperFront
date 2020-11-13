@@ -27,6 +27,8 @@ export default function LandingPane(){
     const [fNameState, setFNameState] = useState(viewedUser.firstName);
     const [lNameState, setLNameState] = useState(viewedUser.lastName);
     // const [emailState, setEmailState] = useState(viewedUser.email);
+
+    const [uploadedImage, setUploadedImage] = useState(new FormData());
     
     let pfpLink:string;
     let biography:string;
@@ -89,6 +91,7 @@ export default function LandingPane(){
             } catch(err){
                 console.log(err);
             }
+            setUploadedImage(new FormData());
 
             if(!newImageLink)
                 return;
